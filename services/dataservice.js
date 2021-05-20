@@ -31,7 +31,7 @@ const register=(uid,uname,pswd)=>{
     })
 }
 
-const login=(uid,uname)=>{
+const login=(uid)=>{
     return db.User.findOne({uid}).then((result)=>{
         if(result){
             return{
@@ -50,7 +50,27 @@ const login=(uid,uname)=>{
     })
 }
 
+const buy=(uid,pswd)=>{
+    return db.User.findOne({uid}).then((result)=>{
+        if(result){
+            return{
+                status:true,
+                statuscode:200,
+                message:"success"
+            }
+        }
+        else{
+            return{
+                status:false,
+                statuscode:422,
+                message:"error occured"
+            }
+        }
+    })
+}
+
 module.exports={
     register,
     login,
+    buy,
 }

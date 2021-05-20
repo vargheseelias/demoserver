@@ -22,6 +22,13 @@ const express=require('express')
      })
  })
 
+ app.post('/buy',(req,res)=>{
+     dataservice.buy(req.body.uid,req.body.pswd)
+     .then((result)=>{
+         res.status(result.statuscode).json(result)
+     })
+ })
+
  
 
  app.listen(3000,()=>{
